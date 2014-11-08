@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'json'
 
 module Deliver
   # A wrapper around the Apple iTunes Search API to access app information like
@@ -9,7 +10,7 @@ module Deliver
     # @param id (int) The AppleID of the given app. This usually consists of 9 digits.
     # @return (Hash) the response of the first result from Apple (https://itunes.apple.com/lookup?id=284882215)
     # @example Response of Facebook App: https://itunes.apple.com/lookup?id=284882215
-    #  { 
+    #  {
     #   ...
     #   artistName: "Facebook, Inc.",
     #   price: 0,
@@ -25,7 +26,7 @@ module Deliver
       # Example: http://itunes.apple.com/lookup?bundleId=net.sunapps.1
       fetch_url("https://itunes.apple.com/lookup?bundleId=#{app_identifier}")
     end
-      
+
 
     # This method only fetches the bundle identifier of a given app
     # @param id (int) The AppleID of the given app. This usually consists of 9 digits.
