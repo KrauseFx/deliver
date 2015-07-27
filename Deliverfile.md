@@ -91,7 +91,7 @@ Contact information for the app review team. Available options: `first_name`, `l
 
 
 ```ruby
-app_review_information(
+app_review_information({
   first_name: "Felix",
   last_name: "Krause",
   phone_number: "123123",
@@ -99,7 +99,7 @@ app_review_information(
   demo_user: "demoUser",
   demo_password: "demoPass",
   notes: "such notes, very text"
-)
+})
 ```
 
 ##### ratings_config_path
