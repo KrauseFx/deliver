@@ -1,7 +1,7 @@
 require 'pty'
 require 'shellwords'
 require 'credentials_manager/password_manager'
-
+#require 'pry'
 
 module Deliver
   # The TransporterInputError occurs when you passed wrong inputs to the {Deliver::ItunesTransporter}
@@ -95,8 +95,9 @@ module Deliver
       end
 
       # Try to recover to some errors
-      if ENV['DELIVER_IGNORE_REDUNDANT_BINARY_UPLOAD_ERROR']
+      if ENV['DELIVER_IGNORE_REDUNDANT_BINARY_UPLOAD_ERROR'].to_s == "true"
         result = result or @errors.first.include?"Redundant Binary Upload." # this just means, the ipa is already online
+        #binding.pry
       end
 
       return result
