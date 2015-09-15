@@ -69,7 +69,6 @@ module Deliver
         is_okay = transporter.upload(@app, @metadata_dir)
       rescue => ex
         Helper.log.debug ex
-        is_okay = ex.to_s.include?"ready exists a binary upload with build" # this just means, the ipa is already online
       end
 
       if is_okay
