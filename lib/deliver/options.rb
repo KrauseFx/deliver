@@ -43,6 +43,11 @@ module Deliver
                                      short_option: '-z',
                                      description: "The version that should be edited or created",
                                      optional: true),
+        FastlaneCore::ConfigItem.new(key: :init_app_version,
+                                     short_option: "-k",
+                                     description: "The version that should be initialized with. Currently only [live_version, latest_version] are supported default : latest_version", # @todo : Would be great to init with an App Store version number like "3.0"
+                                     optional: true,
+                                     is_string: true),
         FastlaneCore::ConfigItem.new(key: :skip_metadata,
                                      description: "Only upload the build - no metadata",
                                      is_string: false,

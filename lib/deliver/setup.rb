@@ -28,7 +28,13 @@ module Deliver
     # This method takes care of creating a new 'deliver' folder, containg the app metadata
     # and screenshots folders
     def generate_deliver_file(deliver_path, options)
-      v = options[:app].latest_version
+      if options[:init_app_version] == "live_version"
+        print "Init with live_version"
+        v = options[:app].live_version
+      else
+        v = options[:app].latest_version
+      end
+
       generate_metadata_files(v, deliver_path)
 
       # Generate the final Deliverfile here
