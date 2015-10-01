@@ -49,7 +49,6 @@ module Deliver
       Dir.glob(File.join(options[:screenshots_path], "*"), File::FNM_CASEFOLD).sort.each do |lng_folder|
         language = File.basename(lng_folder)
 
-
         files = Dir.glob(File.join(lng_folder, '*.{png,jpg,jpeg}'))
         next if files.count == 0
 
