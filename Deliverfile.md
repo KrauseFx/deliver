@@ -173,5 +173,11 @@ The english name of the category you want to set (e.g. `Business`, `Books`)
 
 See [Reference.md](https://github.com/KrauseFx/deliver/blob/master/Reference.md) for a list of available categories
 
+##### primary_first_sub_category
+The english name of the primary first sub category you want to set (e.g. `Puzzle`, `Trivia`). This can be used when the primary_category is `Games` in order to set the first `Games` sub-category.
+
+##### primary_second_sub_category
+The english name of the primary second sub category you want to set (e.g. `Puzzle`, `Trivia`). This can be used when the primary_category is `Games` in order to set the second `Games` sub-category.
+
 ##### secondary_category
 The english name of the secondary category you want to set
