@@ -19,6 +19,8 @@ module Deliver
       IOS_APPLE_WATCH = "iOS-Apple-Watch"
       # Mac
       MAC = "Mac"
+      # Apple TV
+      IOS_TV = "iOS-Apple-TV"
     end
 
     # @return [Deliver::ScreenSize] the screen size (device type)
@@ -44,6 +46,7 @@ module Deliver
     end
 
     # The iTC API requires a different notation for the device
+    # These are keys from the languages hash of the version response data
     def device_type
       matching = {
         ScreenSize::IOS_35 => "iphone35",
@@ -52,7 +55,9 @@ module Deliver
         ScreenSize::IOS_55 => "iphone6Plus",
         ScreenSize::IOS_IPAD => "ipad",
         ScreenSize::MAC => "mac",
-        ScreenSize::IOS_APPLE_WATCH => "watch"
+        ScreenSize::IOS_APPLE_WATCH => "watch",
+        ScreenSize::IOS_TV => "appleTV"
+
       }
       return matching[self.screen_size]
     end
@@ -66,7 +71,8 @@ module Deliver
         ScreenSize::IOS_55 => "iPhone 6 Plus",
         ScreenSize::IOS_IPAD => "iPad",
         ScreenSize::MAC => "Mac",
-        ScreenSize::IOS_APPLE_WATCH => "Watch"
+        ScreenSize::IOS_APPLE_WATCH => "Watch",
+        ScreenSize::IOS_TV => "Apple TV"
       }
       return matching[self.screen_size]
     end
@@ -85,7 +91,12 @@ module Deliver
 
       raise "Could not find or parse file at path '#{path}'" if size.nil? or size.count == 0
 
+      # the iOS TV clashes with the 6+ :-/
+
       devices = {
+        ScreenSize::IOS_TV => [
+          [1920, 1080]
+        ],
         ScreenSize::IOS_55 => [
           [1080, 1920],
           [1242, 2208]
@@ -121,7 +132,7 @@ module Deliver
         ],
         ScreenSize::IOS_APPLE_WATCH => [
           [312, 390]
-        ]
+        ],
       }
 
       devices.each do |device_type, array|
