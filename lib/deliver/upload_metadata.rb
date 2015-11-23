@@ -63,7 +63,6 @@ module Deliver
 
     # If the user is using the 'default' language, then assign values where they are needed
     def assign_defaults(options)
-
       # Build a complete list of the required languages
       enabled_languages = []
 
@@ -82,25 +81,23 @@ module Deliver
 
         language = File.basename(lng_folder)
         enabled_languages << language unless enabled_languages.include?(language)
-
       end
 
       return unless enabled_languages.include?("default")
-      Helper.log.info "Detected languages: "+enabled_languages.to_s
+      Helper.log.info "Detected languages: " + enabled_languages.to_s
 
-      #for each detected language, assign the default value if there specified value
       (LOCALISED_VERSION_VALUES + LOCALISED_APP_VALUES).each do |key|
         current = options[key]
         next unless current && current.kind_of?(Hash)
-        
+
         default = current["default"]
-        next unless !default.nil?
+        next if default.nil?
 
         enabled_languages.each do |language|
-          value=current[language]
+          value = current[language]
           next unless value.nil?
 
-          current[language]=default
+          current[language] = default
         end
         current.delete("default")
       end
