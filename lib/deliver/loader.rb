@@ -2,7 +2,7 @@ require 'fastlane_core/languages'
 
 module Deliver
   module Loader
-    ALL_LANGUAGES = FastlaneCore::Languages::ALL_LANGUAGES.map(&:downcase).freeze
+    ALL_LANGUAGES = FastlaneCore::Languages::ALL_LANGUAGES.map(&:downcase).push("default").freeze
 
     def self.language_folders(root)
       Dir.glob(File.join(root, '*')).select do |path|
