@@ -76,7 +76,7 @@ module Deliver
             end
           end
 
-          screenshots << AppScreenshot.new(path, language)
+          screenshots << AppScreenshot.new(File.realpath(path), language)
         end
       end
 

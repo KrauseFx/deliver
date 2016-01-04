@@ -47,7 +47,7 @@ module Deliver
       UploadMetadata.new.load_from_filesystem(options)
 
       # Validate
-      validate_html(screenshots)
+      validate_html(options, screenshots)
 
       # Commit
       UploadMetadata.new.upload(options)
@@ -75,9 +75,9 @@ module Deliver
 
     private
 
-    def validate_html(screenshots)
+    def validate_html(options, screenshots)
       return if options[:force]
-      HtmlGenerator.new.run(options, screenshots)
+      HtmlGenerator.new.run(options, screenshots, options[:metadata_path])
     end
   end
 end

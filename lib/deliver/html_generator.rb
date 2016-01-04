@@ -1,8 +1,8 @@
 module Deliver
   class HtmlGenerator
-    def run(options, screenshots)
+    def run(options, screenshots, export_path)
       begin
-        html_path = self.render(options, screenshots, '.')
+        html_path = self.render(options, screenshots, export_path)
       rescue => ex
         Helper.log.error ex.inspect
         Helper.log.error ex.backtrace.join("\n")
@@ -42,7 +42,7 @@ module Deliver
       html_path = File.join(lib_path, "lib/assets/summary.html.erb")
       html = ERB.new(File.read(html_path)).result(binding) # http://www.rrn.dk/rubys-erb-templating-system
 
-      export_path = File.join(export_path, "Preview.html")
+      export_path = File.join(export_path, "preview.html")
       File.write(export_path, html)
 
       return export_path
