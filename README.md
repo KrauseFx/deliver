@@ -170,7 +170,7 @@ no, en-US, en-CA, fi, ru, zh-Hans, nl-NL, zh-Hant, en-AU, id, de-DE, sv, ko, ms,
 
 ## Default values
 
-Deliver has a special language code which allows you to provide values that are not localised, and which will be used as defaults when you don’t provide a specific localised value.
+Deliver has a special ```default``` language code which allows you to provide values that are not localised, and which will be used as defaults when you don’t provide a specific localised value.
 
 You can use this either in json within your deliverfile, or as a folder in your metadata file.
 
