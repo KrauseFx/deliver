@@ -182,7 +182,7 @@ You can set the following in your deliverfile
 
 ```
 release_notes({
-  'default => "Shiny and new”,
+  'default' => "Shiny and new”,
   'de-DE' => "glänzend und neu"
 })
 ```
