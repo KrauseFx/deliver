@@ -71,7 +71,7 @@ module Deliver
 
       unless build
         UI.error(app.latest_version.candidate_builds)
-        UI.crash("Could not find build")
+        UI.crash!("Could not find build")
       end
 
       return build
