@@ -8,7 +8,7 @@ module Deliver
         Helper.log.error ex.backtrace.join("\n")
         okay = agree("Could not render HTML preview. Do you still want to continue? (y/n)".red, true)
         return if okay
-        raise "Could not render HTML page"
+        UI.user_error!("Could not render HTML page")
       end
       puts "----------------------------------------------------------------------------"
       puts "Verifying the upload via the HTML file can be disabled by either adding"
@@ -21,7 +21,7 @@ module Deliver
       if okay
         puts "HTML file confirmed...".green # print this to give feedback to the user immediately
       else
-        raise "Did not upload the metadata, because the HTML file was rejected by the user".yellow
+        UI.user_error!("Did not upload the metadata, because the HTML file was rejected by the user")
       end
     end
 
